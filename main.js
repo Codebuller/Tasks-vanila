@@ -1,4 +1,3 @@
-
 window.addEventListener('load', async () =>{
   if(navigator.serviceWorker)
   {
@@ -15,19 +14,43 @@ import { cloak } from './cloak'
 import { Update, intallEv } from './events';
 import { Soundconst } from './sound';
 import axios from 'axios';
+
+let sity,wetObj,icon,tempFeels,temp,tempDescription,lastUpdate
 const  Revalidate  = async () =>{
   await getLoc()
   await getWether(JSON.parse(window.localStorage.getItem('location')).loc) 
+  console.log(window.sessionStorage.getItem('wether'))
+   wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
+  lastUpdate = wetObj.current.last_updated_epoch;
+   sity = wetObj.location.name;
+   icon = wetObj.current.condition.icon;
+   tempFeels  = wetObj.current.feelslike_c;
+   temp  = wetObj.current.temp_c;
+ 
+   tempDescription = wetObj.current.condition.text;
   
+document.querySelector('.temp').textContent = temp+'°';
+document.querySelector('.wether-discription').textContent = tempDescription
+
+
+
+const sityEl = document.querySelector('.sity');
+const img = document.querySelector('.wether');
+img.src = icon;
+sityEl.textContent = sity;
 }
-if(localStorage.getItem('location') === null)
-Revalidate()
+if(localStorage.getItem('location') === null || sessionStorage.getItem('wether') === null)
+(async () => {
+console.log('Go')
+await Revalidate()
+})();
 cloak(); 
 
 
 let tasksHTML = " <h1 class='task-paragraf'>Tasks</h1>"
 
 document.querySelector(".buttonAdd").addEventListener('click',(e)=>{
+  
   let el = document.getElementsByClassName("form__field")[0].value
   localStorage.setItem('tasks',localStorage.getItem('tasks')===null ?el :localStorage.getItem('tasks')+'`'+el);
   let tasksHTML = " <h1 class='task-paragraf'>Tasks</h1>"
@@ -40,29 +63,13 @@ document.querySelector(".buttonAdd").addEventListener('click',(e)=>{
     Update();
     const popupСontainer = document.querySelector(".popup-container");
     popupСontainer.style.display = 'none';
+    document.querySelector(".form__field").value = '';
 })
 
-const wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
-let lastUpdate = wetObj.current.last_updated_epoch;
-if(Math.floor(Date.now() / 1000) - lastUpdate>1800){
-Revalidate();
-wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
-}
-
-lastUpdate = wetObj.current.last_updated_epoch;
-const sity = wetObj.location.name;
-const icon = wetObj.current.condition.icon;
-
-const tempFeels  = wetObj.current.feelslike_c;
-const temp  = wetObj.current.temp_c;
-document.querySelector('.temp').textContent = temp+'°';
-const tempDescription = wetObj.current.condition.text;
-document.querySelector('.wether-discription').textContent = tempDescription
-
-// const timer = document.querySelector('.timer')
-// const datanow = new Date() `[ ${text}]`
-
-// window.localStorage.setItem('tasks',tasks.toString());
+ 
+// if(Math.floor(Date.now() / 1000) - lastUpdate>1800){
+// Revalidate();
+// }
 
 
 const tasksContent = document.querySelector('.tasks-content');
@@ -77,7 +84,18 @@ localStorage.getItem('tasks').split('`').forEach(el=>{
 }
 
 tasksContent.innerHTML = tasksHTML;
-
+if(sessionStorage.getItem('wether') !== null){
+  wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
+  lastUpdate = wetObj.current.last_updated_epoch;
+   sity = wetObj.location.name;
+   icon = wetObj.current.condition.icon;
+   tempFeels  = wetObj.current.feelslike_c;
+   temp  = wetObj.current.temp_c;
+ 
+   tempDescription = wetObj.current.condition.text;
+  
+document.querySelector('.temp').textContent = temp+'°';
+document.querySelector('.wether-discription').textContent = tempDescription
 
 
 
@@ -85,8 +103,7 @@ const sityEl = document.querySelector('.sity');
 const img = document.querySelector('.wether');
 img.src = icon;
 sityEl.textContent = sity;
-
-
+}
 intallEv();
 
   

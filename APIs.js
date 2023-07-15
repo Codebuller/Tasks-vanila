@@ -1,6 +1,6 @@
 import axios from 'axios';
 export async function getWether(loc){
-   
+ 
   const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q='+loc.toString();
   const options = {
       method: 'GET',
@@ -13,7 +13,8 @@ export async function getWether(loc){
   try {
       const response = await fetch(url, options);
       const result = await response.text();
-      window.sessionStorage.setItem('wether',result);
+      await window.sessionStorage.setItem('wether',result);
+      console.log("Записал",sessionStorage.getItem('wether'))
   } catch (error) {
       console.error(error); 
   }
@@ -21,10 +22,11 @@ export async function getWether(loc){
   
 
  export async function getLoc() {
+
     try{
     const response = await  fetch("https://ipinfo.io/31.134.188.36?token=9c604eb6371a64");
       const result = await response.text();
-      window.localStorage.setItem('location',result);
+      await window.localStorage.setItem('location',result);
     }
     catch(error){
       console.error(error); 

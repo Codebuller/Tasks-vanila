@@ -32,9 +32,7 @@ async function cacheFirst(request){
     //     request.url="http://localhost:5173/index.html"
     // return await caches.match(request)
     // }
-    
-    console.log(request)
     const cached = await caches.match(request)
-    console.log(request.url,cached)
+   
     return cached ?? await fetch(request) 
 }
