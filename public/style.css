@@ -272,4 +272,59 @@ h1{
 .buttonPupUp:hover{
   background-color: #ffa500;
 }
+.box-wether{
+  grid-column: 2;
+  position: relative;
+  display: grid;
+  grid-template-rows: 25% 50% 25%;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+@media (max-width: 700px) {
+  .menu-container{
+    grid-template-rows:  50vh;
+    grid-template-columns: 4vw 90vw 4vw;
+    width: 100vw;
+    height: 50vh;
+  }
+  .time{
+    grid-column: 2;
+    grid-row: 1;
+    display: grid; 
+    grid-template-rows: 40% 50%;
+    grid-template-columns: 100%;
+  }
+  .cloak{
+    width: 100%;
+    height: 100%;
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .box-wether{
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    display: grid;
+    grid-template-rows: 25% 50% 25%;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+  .buttonPupUp{
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  margin-top: 10px;
+  top: 100%;
+  width: 40%;
+  }
+  .tasks-content{
+    position: relative;
+  }
 
+
+
+}

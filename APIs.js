@@ -24,7 +24,7 @@ export async function getWether(loc){
  export async function getLoc() {
 
     try{
-    const response = await  fetch("https://ipinfo.io/31.134.188.36?token=9c604eb6371a64");
+    const response = await  fetch("https://ipinfo.io?token=9c604eb6371a64");
       const result = await response.text();
       await window.localStorage.setItem('location',result);
     }

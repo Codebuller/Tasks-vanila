@@ -66,12 +66,6 @@ document.querySelector(".buttonAdd").addEventListener('click',(e)=>{
     document.querySelector(".form__field").value = '';
 })
 
- 
-// if(Math.floor(Date.now() / 1000) - lastUpdate>1800){
-// Revalidate();
-// }
-
-
 const tasksContent = document.querySelector('.tasks-content');
 
 if(localStorage.getItem('tasks') === null)
