@@ -21,7 +21,7 @@ const  Revalidate  = async () =>{
   
 }
 if(localStorage.getItem('location') === null)
-await Revalidate()
+Revalidate()
 cloak(); 
 
 
@@ -45,7 +45,7 @@ document.querySelector(".buttonAdd").addEventListener('click',(e)=>{
 const wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
 let lastUpdate = wetObj.current.last_updated_epoch;
 if(Math.floor(Date.now() / 1000) - lastUpdate>1800){
-await Revalidate();
+Revalidate();
 wetObj = JSON.parse(window.sessionStorage.getItem('wether'));
 }
 
@@ -89,8 +89,9 @@ sityEl.textContent = sity;
 
 intallEv();
 
-  const play = document.querySelector(".aud");
+  
   async function getLink(){
+    const play = document.querySelector(".aud");
   let res = await getAudio("");
   play.src = res;
   console.log(res);
@@ -103,5 +104,5 @@ intallEv();
     play.src = "";
 });
   }
-  //getLink()
+  // getLink()
 
