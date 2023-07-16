@@ -1,12 +1,12 @@
 const staticCacheName = 'version1'
 const assetsUrls = [
     'index.html',
-    'main.js',
-    'APIs.js',
-    'cloak.js',
-    'events.js',
-    'sound.js',
-    'manifest.json',
+    '/script/main.js',
+    '/script/APIs.js',
+    '/script/cloak.js',
+    '/script/events.js',
+    '/script/sound.js',
+    '/manifest.json',
     "sw.js",
     '/style.css'
    

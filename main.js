@@ -9,9 +9,9 @@ window.addEventListener('load', async () =>{
     }
   }
 })
-import { getLoc, getWether } from './APIs';
-import { cloak } from './cloak'
-import { Update, intallEv } from './events';
+import { getLoc, getWether } from '/public/script/APIs';
+import { cloak } from '/public/script/cloak'
+import { Update, intallEv } from '/public/script/events';
 
 let sity,wetObj,icon,tempFeels,temp,tempDescription,lastUpdate
 const  Revalidate  = async () =>{
