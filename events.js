@@ -25,7 +25,7 @@
         localStorage.setItem('tasks',string)
         else{
           localStorage.removeItem('tasks');
-          document.querySelector('.tasks-content').innerHTML = `<h1 class='task-paragraf'>Tasks</h1><h1 style='margin:auto;font-size: 3em;'>No tasks now,let's go work</h1>`;
+          document.querySelector('.tasks-content').innerHTML = `<h1 class='task-paragraf'>Tasks</h1><h1 style='margin:auto;font-size: 3em;'>No tasks now</h1>`;
         }
          e.parentElement.remove()
         })

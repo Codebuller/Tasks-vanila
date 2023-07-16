@@ -12,7 +12,10 @@ export async function getWether(loc){
   
   try {
       const response = await fetch(url, options);
-      const result = await response.text();
+      let result = await response.text();
+      result = JSON.parse(result);
+      result.datetime = new Date();
+      result  = JSON.stringify(result);
       await window.sessionStorage.setItem('wether',result);
       console.log("Записал",sessionStorage.getItem('wether'))
   } catch (error) {
@@ -34,7 +37,7 @@ export async function getWether(loc){
   }
   
 
-  export const getAudio = async (textAud) =>{
+  export const getAudiofirst = async (textAud) =>{
     let idAud; 
 
     const optionsFirst = {
