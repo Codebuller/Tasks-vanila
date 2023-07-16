@@ -17,7 +17,6 @@ export async function getWether(loc){
       result.datetime = new Date();
       result  = JSON.stringify(result);
       await window.sessionStorage.setItem('wether',result);
-      console.log("Записал",sessionStorage.getItem('wether'))
   } catch (error) {
       console.error(error); 
   }
@@ -77,7 +76,6 @@ export async function getWether(loc){
         try {
           const response = await axios.request(optionssSec);
           if(response.data.status === "success"){
-            console.log(response.data)
             return response.data.url;
           }
          
