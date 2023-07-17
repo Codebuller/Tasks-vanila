@@ -1,7 +1,7 @@
 const staticCacheName = 'version1'
 const assetsUrls = [
     'index.html',
-    '/script/main.js',
+    'main.js',
     '/script/APIs.js',
     '/script/cloak.js',
     '/script/events.js',
