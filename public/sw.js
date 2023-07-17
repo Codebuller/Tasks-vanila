@@ -7,14 +7,18 @@ const assetsUrls = [
     '/script/events.js',
     '/script/sound.js',
     '/manifest.json',
-    "sw.js",
-    '/style.css'
+    "/sw.js",
+    '/style.css',
    
 ]
 self.addEventListener('install', async e =>{
 
     const cache = await caches.open(staticCacheName);
-    await cache.addAll(assetsUrls)
+    // await cache.add('index.html');
+    // await cache.add('index.html');
+    // await cache.add('/script/APIs.js');
+    // await cache.add('index.html');
+    await cache.addAll(assetsUrls);
 })
 // self.addEventListener('activate', async e => {
 //     const cacheKeys = await caches.keys();

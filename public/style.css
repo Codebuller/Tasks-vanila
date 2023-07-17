@@ -292,7 +292,7 @@ h1{
     grid-column: 2;
     grid-row: 1;
     display: grid; 
-    grid-template-rows: 40% 50%;
+    grid-template-rows: 50% 50%;
     grid-template-columns: 100%;
   }
   .cloak{
@@ -337,7 +337,10 @@ h1{
   text-align: center;
   top: 40%;
 }
-  
+.wether-discription{
+  white-space: nowrap;
+    font-size: 1.5em;
+}
 
 
 }

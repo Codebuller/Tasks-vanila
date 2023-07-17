@@ -1,4 +1,5 @@
 export const cloak = (time) =>{ 
+  console.log(new Date(time))
     var hands = [];
     hands.push(document.querySelector('#secondhand > *'));
     hands.push(document.querySelector('#minutehand > *'));

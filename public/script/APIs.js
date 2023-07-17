@@ -14,7 +14,7 @@ export async function getWether(loc){
       const response = await fetch(url, options);
       let result = await response.text();
       result = JSON.parse(result);
-      result.datetime = new Date();
+      result.datetime = Math.floor(new Date().getTime/1000);
       result  = JSON.stringify(result);
       await window.sessionStorage.setItem('wether',result);
   } catch (error) {
