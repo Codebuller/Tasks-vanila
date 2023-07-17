@@ -40,7 +40,6 @@ sityEl.textContent = sity;
 }
 if(localStorage.getItem('location') === null || sessionStorage.getItem('wether') === null)
 (async () => {
-console.log('Go')
 await Revalidate()
 })();
 
